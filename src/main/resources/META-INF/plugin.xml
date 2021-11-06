@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>com.cnsky1103.A-SOUL-Reminder</id>
+    <name>A-SOUL 提醒小助手</name>
+    <vendor email="cnsky1103@gmail.com" url="https://github.com/cnsky1103">sky</vendor>
+
+    <description><![CDATA[参考vscode版本的A-SOUL鼓励师。提醒你休息的A-SOUL小助手，每一段时间自动展示一张二创图片，包含防社死模式]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="A-SOUL-Reminder.openPicture" class="com.cnsky1103.action.OpenPictureAction" text="OpenPicture">
+            <add-to-group group-id="HelpMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
