@@ -11,12 +11,18 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <applicationService serviceInterface="com.cnsky1103.storage.StorageService"
+                            serviceImplementation="com.cnsky1103.storage.StorageServiceImpl"/>
+        <postStartupActivity implementation="com.cnsky1103.activity.ReminderPostStartupActivity"/>
+        <notificationGroup id="A-SOUL-Reminder" displayType="STICKY_BALLOON"/>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <action id="A-SOUL-Reminder.openPicture" class="com.cnsky1103.action.OpenPictureAction" text="OpenPicture">
+        <action id="A-SOUL-Reminder.openPicture" class="com.cnsky1103.action.OpenPictureAction" text="OpenPicture"/>
+        <action id="A-SOUL-Reminder.openSetting" class="com.cnsky1103.action.OpenSettingAction" text="A-SOUL-Reminder">
             <add-to-group group-id="HelpMenu" anchor="first"/>
         </action>
+        <action id="A-SOUL-Reminder.workAction" class="com.cnsky1103.action.WorkAction" text="workAction"/>
     </actions>
 </idea-plugin>
