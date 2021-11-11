@@ -8,7 +8,7 @@ public class StorageServiceTest {
     @Test
     public void testStore() {
         SettingState settingState = StorageService.getInstance().getState();
-        settingState.setReminderTitle("title");
+        settingState.setReminderBody("title");
         settingState.setInterval(80);
         settingState.setReminderMode(ReminderModeEnum.DIRECT);
         StorageService.getInstance().setState(settingState);
