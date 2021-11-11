@@ -12,6 +12,9 @@
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="183"/>
+
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <applicationService serviceInterface="com.cnsky1103.storage.StorageService"
