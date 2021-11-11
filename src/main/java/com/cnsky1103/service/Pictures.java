@@ -44,6 +44,7 @@ public class Pictures {
         System.out.println(result);
         Gson pictureGson = new Gson();
         Picture picture = pictureGson.fromJson(result.toString(), Picture.class);
+        System.out.println(picture.getImg());
         return picture;
     }
 
@@ -63,7 +64,7 @@ public class Pictures {
             if (!projectDirFile.exists()) {
                 projectDirFile.mkdir();
             }
-            String imgPath = projectDirFile + File.separator + "img.jpg";
+            String imgPath = projectDirFile + File.separator + parsePictureNameFromUrl(url);
             System.out.println(imgPath);
             File imgFile = new File(imgPath);
             if (!imgFile.exists()) {
@@ -109,5 +110,15 @@ public class Pictures {
                 .build();
 
         return client;
+    }
+
+    /**
+     * 将https://i0.hdslb.com/bfs/album/4a3f76e27f050b543789dab8394e2479b9dd2a92.jpg
+     * 转化为4a3f76e27f050b543789dab8394e2479b9dd2a92.jpg
+     * @param url
+     * @return
+     */
+    public static String parsePictureNameFromUrl(String url) {
+        return url.substring(url.lastIndexOf('/') + 1);
     }
 }
