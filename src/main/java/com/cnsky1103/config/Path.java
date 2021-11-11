@@ -14,7 +14,7 @@ public class Path {
      * 插件配置文件的根目录，目前只支持Windows和mac OS
      */
     public static final String pluginHomePath =
-            System.getProperties().getProperty("os").startsWith("Windows") ?
+            System.getProperties().getProperty("os.name").startsWith("Windows") ?
                     "C:\\Users\\" + System.getProperties().getProperty("user.name") + "\\" + ".a-soul-reminder"
                     : "/Users/" + System.getProperties().getProperty("user.name") + "/.a-soul-reminder";
 
