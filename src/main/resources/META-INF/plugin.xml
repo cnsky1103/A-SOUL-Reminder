@@ -5,6 +5,7 @@
 
     <description><![CDATA[参考vscode版本的A-SOUL鼓励师。提醒你休息的A-SOUL小助手，每一段时间自动展示一张二创图片，包含防社死模式]]></description>
 
+    <change-notes>1.0 release.</change-notes>
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
