@@ -13,11 +13,11 @@ new FormModel {
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "reminderTitleLabel"
+						name: "reminderBodyLabel"
 						"text": "提醒标题"
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "reminderTitleText"
+						name: "reminderBodyText"
 						"text": "一个魂儿，代码写久了，该休息了捏"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {

@@ -5,8 +5,10 @@
 package com.cnsky1103.view;
 
 import com.cnsky1103.config.Data;
+import com.cnsky1103.config.Text;
 import com.cnsky1103.model.ReminderModeEnum;
 import com.cnsky1103.model.SettingState;
+import com.cnsky1103.service.ReminderTask;
 import com.cnsky1103.storage.StorageService;
 
 import java.awt.*;
@@ -15,7 +17,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author 孙 恺元
+ * 设置界面
+ * 由JFormDesigner插件生成
+ * @author sky
  */
 public class SettingComponent extends JFrame {
     public SettingComponent() {
@@ -24,14 +28,16 @@ public class SettingComponent extends JFrame {
 
     private void okButtonActionPerformed(ActionEvent e) {
         System.out.println("okButtonActionPerformed");
-        System.out.println(this.reminderTitleText.getText());
-        System.out.println(this.intervalText.getText());
-        System.out.println(ReminderModeEnum.values()[this.reminderModeComboBox.getSelectedIndex()]);
 
         SettingState settingState = StorageService.getInstance().getState();
-        settingState.setReminderTitle(this.reminderTitleText.getText());
+        settingState.setReminderBody(this.reminderBodyText.getText());
         try {
-            settingState.setInterval(Integer.parseInt(this.intervalText.getText()));
+            int inputInterval = Integer.parseInt(this.intervalText.getText());
+            if (inputInterval > 0) {
+                settingState.setInterval(inputInterval);
+            } else {
+                settingState.setInterval(Data.defaultInterval);
+            }
         } catch (NumberFormatException ex) {
             settingState.setInterval(Data.defaultInterval);
         }
@@ -39,6 +45,8 @@ public class SettingComponent extends JFrame {
         StorageService.getInstance().setState(settingState);
 
         this.setVisible(false);
+
+        ReminderTask.restart();
     }
 
     private void cancelButtonActionPerformed(ActionEvent e) {
@@ -50,8 +58,8 @@ public class SettingComponent extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        reminderTitleLabel = new JLabel();
-        reminderTitleText = new JTextField();
+        reminderBodyLabel = new JLabel();
+        reminderBodyText = new JTextField();
         intervalLabel = new JLabel();
         intervalText = new JTextField();
         reminderModeLabel = new JLabel();
@@ -73,16 +81,16 @@ public class SettingComponent extends JFrame {
             {
                 contentPanel.setLayout(new GridLayout(3, 0));
 
-                //---- reminderTitleLabel ----
-                reminderTitleLabel.setText("\u63d0\u9192\u6807\u9898");
-                contentPanel.add(reminderTitleLabel);
+                //---- reminderBodyLabel ----
+                reminderBodyLabel.setText(Text.reminderBodyLabel);
+                contentPanel.add(reminderBodyLabel);
 
-                //---- reminderTitleText ----
-                reminderTitleText.setText(StorageService.getInstance().getState().getReminderTitle());
-                contentPanel.add(reminderTitleText);
+                //---- reminderBodyText ----
+                reminderBodyText.setText(StorageService.getInstance().getState().getReminderBody());
+                contentPanel.add(reminderBodyText);
 
                 //---- intervalLabel ----
-                intervalLabel.setText("\u63d0\u9192\u95f4\u9694");
+                intervalLabel.setText(Text.intervalLabel);
                 contentPanel.add(intervalLabel);
 
                 //---- intervalText ----
@@ -90,13 +98,13 @@ public class SettingComponent extends JFrame {
                 contentPanel.add(intervalText);
 
                 //---- reminderModeLabel ----
-                reminderModeLabel.setText("\u63d0\u9192\u6a21\u5f0f");
+                reminderModeLabel.setText(Text.reminderModeLabel);
                 contentPanel.add(reminderModeLabel);
 
                 //---- reminderModeComboBox ----
                 reminderModeComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
-                    "\u95f4\u63a5\u6a21\u5f0f",
-                    "\u76f4\u63a5\u6a21\u5f0f"
+                    ReminderModeEnum.INDIRECT.getDescription(),
+                    ReminderModeEnum.DIRECT.getDescription()
                 }));
                 reminderModeComboBox.setSelectedIndex(StorageService.getInstance().getState().getReminderMode().ordinal());
                 contentPanel.add(reminderModeComboBox);
@@ -135,8 +143,8 @@ public class SettingComponent extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JLabel reminderTitleLabel;
-    private JTextField reminderTitleText;
+    private JLabel reminderBodyLabel;
+    private JTextField reminderBodyText;
     private JLabel intervalLabel;
     private JTextField intervalText;
     private JLabel reminderModeLabel;
