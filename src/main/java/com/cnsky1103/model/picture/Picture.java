@@ -2,6 +2,10 @@ package com.cnsky1103.model.picture;
 
 import java.util.List;
 
+/**
+ * 由网络获得的随机图片
+ * @author sky
+ */
 public class Picture {
     private String img;
     private String dy_url;
