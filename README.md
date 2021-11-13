@@ -1,6 +1,8 @@
-# A-SOUL-Reminder
+# A-SOUL提醒小助手 IDEA版
 
 A-SOUL提醒小助手，每工作60分钟，就会有A-SOUL的小姐姐来提醒你该休息啦
+
+支持IDEA、CLion等JetBrains旗下的IDE；支持Windows和mac OS
 
 在工作区展示一张随机的A-SOUL二创
 
@@ -10,7 +12,7 @@ A-SOUL提醒小助手，每工作60分钟，就会有A-SOUL的小姐姐来提醒
 
 ![提醒](./images/提醒.png)
 
-支持手动设置提醒参数
+打开Help菜单，选择A-SOUL-Reminder手动设置提醒参数
 
 ![设置](./images/设置.png)
 
