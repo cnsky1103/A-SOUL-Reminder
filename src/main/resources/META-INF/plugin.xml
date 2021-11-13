@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.cnsky1103.A-SOUL-Reminder</id>
-    <name>A-SOUL 提醒小助手</name>
+    <name>A-SOUL-Reminder</name>
     <vendor email="cnsky1103@gmail.com" url="https://github.com/cnsky1103">sky</vendor>
 
     <version>1.0.0</version>
